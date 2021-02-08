@@ -29,7 +29,6 @@ html {
   text-shadow: 0.2rem 0.2rem 0.5rem #aaa;
 }
 
-
 /* css 027 :  signup-btn, signin-btn 클릭한때, heading-span에 효과 넣기   */
 .heading span {
   position: relative;
@@ -119,6 +118,23 @@ html {
   border-radius: 5rem;
 }
 
+/* css 030  : signIn-sighUp 버튼 클릭한때, input메뉴 몇개 사라지고 , 돌아오게하기*/
+
+.form-input-wrapper:nth-child(1),
+.form-input-wrapper:nth-child(4) {
+  visibility: hidden;
+  opacity: 0;
+
+  transition: all 0.3s;
+}
+
+/* css 030 */
+.change .form-input-wrapper:nth-child(1),
+.change .form-input-wrapper:nth-child(4) {
+  visibility: visible;
+  opacity: 1;
+}
+
 .form input {
   width: 50rem;
   height: 5rem;
@@ -158,6 +174,15 @@ html {
   letter-spacing: 0.2rem;
   font-weight: bold;
   cursor: pointer;
+
+  /* css 030 */
+  position: relative;
+  top: -6rem;
+}
+
+/* css 030 */
+.change .form-btn {
+  top: 1rem;
 }
 
 /* hover효과 : shadow 진하게 넣는 것으로 세련되게 표현됨 */

@@ -1,7 +1,10 @@
+/* 🍉 signup-btn, signin-btn 클릭한때, classList.add('change'),  ~~~ 효과 넣기 
+js 023
+js 025
+css 027
+css 030*/
 
-
-
-/* js 023: signup-btn, signin-btn 클릭한때, 버튼 색 바뀌게하기
+/* js 023: 버튼 색 바뀌게하기
 
 JS : 
 signUp click하면 , 부모태그에 change 넣고, - 
@@ -17,9 +20,6 @@ CSS :
 textContent vs innerHTML 👉 👻노트필기
 
 */
-
-/*  */
-
 
 const container = document.querySelector('.container');
 
