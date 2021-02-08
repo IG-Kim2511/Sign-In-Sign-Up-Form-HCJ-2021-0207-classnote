@@ -147,7 +147,8 @@ html {
   border: none;
   border-radius: 5rem;
 
-  transition: box-shadow 0.3s; /* css 020 */
+  /* css 033 
+  transition: top 0.3s; 가 적용 안되는 문제*/
 }
 
 .form-input {
@@ -160,7 +161,7 @@ html {
 
 /* css 020 */
 .form-input:focus {
-  box-shadow: 0.5rem 0.5rem 1rem #eee inset;
+  box-shadow: 0.5rem 0.5rem 1rem lightgray inset;
 }
 
 .message {
@@ -178,11 +179,16 @@ html {
   /* css 030 */
   position: relative;
   top: -6rem;
+  transition: top 0.3s, box-shadow 0.3s;
 }
 
 /* css 030 */
 .change .form-btn {
   top: 1rem;
+  transition: top 0.3s, box-shadow 0.3s;
+
+  /* css 033 
+  transition: top 0.3s; 가 적용 안되는 문제*/
 }
 
 /* hover효과 : shadow 진하게 넣는 것으로 세련되게 표현됨 */
