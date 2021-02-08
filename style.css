@@ -40,7 +40,6 @@ html {
 .buttons button {
   width: 10rem;
   height: 4rem;
-  background-color: #fff;
   font-size: 2rem;
   color: #f03535;
   border: none;
@@ -51,14 +50,21 @@ html {
   cursor: pointer;
 }
 
+.signin-btn {
+  background-color: #e7e7e7;
+}
+
+.signun-btn{
+    background-color: #fff;
+}
+
+
 /* CSS 018 : 빈 div박스에 높은 width ,height + shadow넣어서 전체를 감싸는 효과 넣음 */
 .form-bg {
   position: absolute;
   width: 65rem;
   height: 65rem;
   box-shadow: 1.5rem 1.5rem 1.5rem #ddd;
-
-  transform: rotate(45deg);
 }
 
 .form {
@@ -85,6 +91,8 @@ html {
   /* css 016 : shadow Trick : shadow만들고 border 없애기*/
   border: none;
   border-radius: 5rem;
+
+  transition: box-shadow 0.3s; /* css 020 */
 }
 
 .form-input {
@@ -93,6 +101,11 @@ html {
   box-shadow: 0.3rem 0.3rem 0.5rem #eee inset;
 
   color: #888;
+}
+
+/* css 020 */
+.form-input:focus {
+  box-shadow: 0.5rem 0.5rem 1rem #eee inset;
 }
 
 .message {
@@ -105,6 +118,7 @@ html {
   margin: 2rem 0;
   letter-spacing: 0.2rem;
   font-weight: bold;
+  cursor: pointer;
 }
 
 /* hover효과 : shadow 진하게 넣는 것으로 세련되게 표현됨 */
