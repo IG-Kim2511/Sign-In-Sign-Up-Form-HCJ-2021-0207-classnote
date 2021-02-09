@@ -129,17 +129,29 @@ sign-in 에서는 [email,password] 만 검사
      }
  };
 
+ /* js 054, 
+ 1. input1, input2 파라미터 
+ 2. password-password2 비교 , 
+ 4. 서로 다르면 error message
+ 6.  passwordsMatch(파라미터1,2); 넣고 실행            */
+
+ const passwordsMatch =(input1, input2)=>{
+     if(input1.value !== input2.value){             //js 054-2
+         error(input2, "Passwords do not match");            //js 054-4
+    }
+ }; 
 
 form.addEventListener('submit',(e)=>{
     e.preventDefault();             /* js 039-2 */
 
-    // 
     if(form.classList[1]==='sign-up'){                  // js 047-2, 
         checkRequiredFeilds([username, email, password, password2]);    
 
         checkLength(username,2,15);             //js 051-8
-
         checkLength(password,5.25);             //js 051-8
+
+        passwordsMatch(password, password2);             //js 054-6
+
     } else{
         checkRequiredFeilds([email,password]);
     }    
@@ -147,7 +159,7 @@ form.addEventListener('submit',(e)=>{
 
 
 /* 
-js 049 'sign up -  sign in' 바꿀때 에러메시지가 그대로 있는 것 고치기
+js 049 'sign up -  sign in' 바꿀때 에러메시지 지우기.
 
 알고리즘 : 
 2. 'form sing-up'으로 바뀐 className을 가져오기 - querySelectorAll
