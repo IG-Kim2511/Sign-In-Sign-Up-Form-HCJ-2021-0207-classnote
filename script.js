@@ -18,6 +18,7 @@ CSS :
 
 textContent vs innerHTML 👉 👻노트필기    */
 
+
 const container = document.querySelector('.container');
 const headingSpan2 = document.querySelector('.heading-span-2');
 
@@ -28,8 +29,9 @@ document.querySelector('.signup-btn').addEventListener('click',()=>{
     container.classList.add('change');  /* JS 023 */    
     headingSpan2.textContent = "Up";     /* JS 025 */
 
-    // js 047
-    form.className='form sign-up';
+    form.className='form sign-up';        // js 047
+
+    clearForm();                      // js 049-8
 
 });
 
@@ -38,8 +40,9 @@ document.querySelector('.signin-btn').addEventListener('click',()=>{
     container.classList.remove('change');    /* JS 023 */
     headingSpan2.textContent = "In";    /* JS 025 */
 
-  // js 047
-     form.className='form sign-in';
+     form.className='form sign-in';       // js 047
+
+     clearForm();                      // js 049-8
 });
 
 
@@ -107,7 +110,6 @@ sign-in 에서는 [email,password] 만 검사
 2. .classList[1] : class안 이름 검사하는 법
  */
 
-
 form.addEventListener('submit',(e)=>{
     e.preventDefault();             /* js 039-2 */
 
@@ -119,4 +121,24 @@ form.addEventListener('submit',(e)=>{
     }    
 });
 
-// js 049 'sign up -  sign in' 바꿀때 에러메시지가 그대로 있는 것 고치기
+
+/* 
+js 049 'sign up -  sign in' 바꿀때 에러메시지가 그대로 있는 것 고치기
+
+알고리즘 : 
+2. 'form sing-up'으로 바뀐 className을 가져오기 - querySelectorAll
+
+4. form-input-wrapper로 재설정하기 - forEach
+
+6. form.reset; 으로 에러메시지 지움
+
+8. signup-btn, signin-btn 클릭때마다 실행하기 
+*/
+
+const clearForm = ()=>{   
+
+document.querySelectorAll('.form-input-wrapper').forEach((a)=>{         //js 049-2, js 049-4
+    a.className = 'form-input-wrapper'});
+
+form.reset();               //js 049-6
+};
