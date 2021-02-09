@@ -46,7 +46,7 @@ document.querySelector('.signin-btn').addEventListener('click',()=>{
 });
 
 
-// 🦄part 4, input check
+// 🦄part 4, when click 'submit' , input check
 
 /*
 js 034 input check
@@ -107,8 +107,28 @@ const checkRequiredFeilds = (inputArr)=>{            //js 034-1
 sign-up 에서는  [username, email, password, password2] 모두 검사
 sign-in 에서는 [email,password] 만 검사
 
-2. .classList[1] : class안 이름 검사하는 법
- */
+2. .classList[1] : class안 이름 검사하는 법      */
+
+
+/*  js 051, submit click한때, username, password의 길이 체크
+
+알고리즘: 
+2. input, min, max 파라미터
+4. input.value.length가 min보다 작을때, error
+6.   ~~~~~~~~~~~~~~~~~~ max보다 클때 , error
+
+8. checkLength(파라미터1,2,3) 넣고 실행      */
+
+ const checkLength = (input,min,max)=>{                          //js 051-2
+     if( input.value.length < min ){                                   //js 051-4
+         error(input, `${input.id} must be at least ${min} characters`);
+     }else if(input.value.length > max){                                 //js 051-6
+         error( input, `${input.id} must be less than ${max} characters`);
+     }else{
+         success(input);
+     }
+ };
+
 
 form.addEventListener('submit',(e)=>{
     e.preventDefault();             /* js 039-2 */
@@ -116,6 +136,10 @@ form.addEventListener('submit',(e)=>{
     // 
     if(form.classList[1]==='sign-up'){                  // js 047-2, 
         checkRequiredFeilds([username, email, password, password2]);    
+
+        checkLength(username,2,15);             //js 051-8
+
+        checkLength(password,5.25);             //js 051-8
     } else{
         checkRequiredFeilds([email,password]);
     }    
