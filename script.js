@@ -52,8 +52,8 @@ document.querySelector('.signin-btn').addEventListener('click',()=>{
 js 034 input check
 1. parameter inputArr : array데이터 ...parameter. (input 데이터들)
 
-4. trim : ""무시하게 하는 함수
-str.trim() – 문자열 앞과 끝의 공백 문자를 다듬어 줍니다(제거함). */
+4. trim :
+str.trim() – 문자열 앞과 끝의 빈칸을 제거함 . */
 
 const username= document.querySelector('#username');
 const email= document.querySelector('#email');
@@ -78,6 +78,7 @@ const success = (input)=>{
     const inputWrapper = input.parentElement;
     inputWrapper.className = 'form-input-wrapper success';
 }
+
 
 // js 043 password2는 다른 message 추가
 
@@ -141,6 +142,30 @@ sign-in 에서는 [email,password] 만 검사
     }
  }; 
 
+ /* js 055, email체크 - reqular expression
+
+ 2. google : 'js regex for email' 
+ 
+ 4. test()
+
+ 6. trim()
+
+ 8. success() 👉 borderline색 바뀌는 함수 실행
+
+ 10. checkEmail(email); 함수 실행            */
+
+const checkEmail =(input)=>{
+    const regEx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (regEx.test(input.value.trim())) {
+        success(input);        
+    } else {
+        error(input,"Email is not valid");
+        
+    }
+
+};
+
 form.addEventListener('submit',(e)=>{
     e.preventDefault();             /* js 039-2 */
 
@@ -155,6 +180,7 @@ form.addEventListener('submit',(e)=>{
     } else{
         checkRequiredFeilds([email,password]);
     }    
+    checkEmail(email);              //js 055. if, else에 모두 넣거나, 그냥 바깥에 1개 넣거나..둘다 ㅇㅋ
 });
 
 
