@@ -1,4 +1,4 @@
-/* 🍉 signup-btn, signin-btn 클릭한때, classList.add('change'),  ~~~ 효과 넣기 
+/* 🦄part 2, signup-btn, signin-btn 클릭한때, classList.add('change'),  ~~~ 효과 넣기 
 js 023
 js 025
 css 027
@@ -37,6 +37,8 @@ document.querySelector('.signin-btn').addEventListener('click',()=>{
 });
 
 
+// 🦄part 4, input check
+
 /*
 js 034 input check
 1. parameter inputArr : array데이터 ...parameter. (input 데이터들)
@@ -62,15 +64,27 @@ const error =(input,message)=>{
     inputWrapper.querySelector('.message').textContent = message;     
 };
 
+// js 045 success messsage. 성공하면 borderline 넣기
+const success = (input)=>{
+    const inputWrapper = input.parentElement;
+    inputWrapper.className = 'form-input-wrapper success';
+}
+
+// js 043 password2는 다른 message 추가
+
 const checkRequiredFeilds = (inputArr)=>{            //js 034-1
     inputArr.forEach((input)=>{                  
         if(input.value.trim()===""){      //js 034-4
-         
-            // js 036-8, const error = (input, message)=>{}
-            error(input,`${input.id} is required`); 
 
-        }else{
-            // success
+            if(input.id ==='password2'){                      // js 043
+                error(input,"password confirmation is required");
+            }
+            else{                
+                // js 036-8, const error = (input, message)=>{}
+                error(input,`${input.id} is required`); 
+            }
+        }else{            
+            success(input);             //  js 045 
         }
     });
 }
@@ -82,8 +96,7 @@ const checkRequiredFeilds = (inputArr)=>{            //js 034-1
 const form = document.querySelector('.form')
 
 form.addEventListener('submit',(e)=>{
-    e.preventDefault();             /* js 039-2 */
 
-    checkRequiredFeilds([username, email, password, password2]);
-    
+    e.preventDefault();             /* js 039-2 */
+    checkRequiredFeilds([username, email, password, password2]);    
 });
