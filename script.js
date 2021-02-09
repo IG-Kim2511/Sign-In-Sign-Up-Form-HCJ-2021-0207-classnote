@@ -14,7 +14,6 @@ CSS :
 부모태그에 change 있으면, signUp 에 lightcoral 넣음
 부모태그에 change 없으면, signIn 에 lightcoral 넣음 */
 
-
 /* js 025 : signup-btn, signin-btn 클릭한때, heading-span 내용, "Up - In" 넣어서, sign In, sing Up 만들기
 
 textContent vs innerHTML 👉 👻노트필기    */
@@ -22,18 +21,25 @@ textContent vs innerHTML 👉 👻노트필기    */
 const container = document.querySelector('.container');
 const headingSpan2 = document.querySelector('.heading-span-2');
 
-
+const form = document.querySelector('.form')  //js 039, js 047
 
 document.querySelector('.signup-btn').addEventListener('click',()=>{
 
     container.classList.add('change');  /* JS 023 */    
     headingSpan2.textContent = "Up";     /* JS 025 */
+
+    // js 047
+    form.className='form sign-up';
+
 });
 
 document.querySelector('.signin-btn').addEventListener('click',()=>{
 
     container.classList.remove('change');    /* JS 023 */
     headingSpan2.textContent = "In";    /* JS 025 */
+
+  // js 047
+     form.className='form sign-in';
 });
 
 
@@ -93,10 +99,24 @@ const checkRequiredFeilds = (inputArr)=>{            //js 034-1
 /*  js 039, submit 클릭한때, input자료들 const error변수로 보내기 
 2. e.preventDefault : 기본동작 막기   👉 submit하면 기본적으로 refresh하므로, 일단 기본동작 막고, 다음 코딩함
 */
-const form = document.querySelector('.form')
+
+/* js 047, 
+sign-up 에서는  [username, email, password, password2] 모두 검사
+sign-in 에서는 [email,password] 만 검사
+
+2. .classList[1] : class안 이름 검사하는 법
+ */
+
 
 form.addEventListener('submit',(e)=>{
-
     e.preventDefault();             /* js 039-2 */
-    checkRequiredFeilds([username, email, password, password2]);    
+
+    // 
+    if(form.classList[1]==='sign-up'){                  // js 047-2, 
+        checkRequiredFeilds([username, email, password, password2]);    
+    } else{
+        checkRequiredFeilds([email,password]);
+    }    
 });
+
+// js 049 'sign up -  sign in' 바꿀때 에러메시지가 그대로 있는 것 고치기
