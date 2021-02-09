@@ -58,7 +58,7 @@ const password2= document.querySelector('#password2');
 const error =(input,message)=>{
 
     const inputWrapper = input.parentElement;                  /* js 036-4 */
-    inputWrapper.className = "fomr-input-wrapper error";            /* js 036-6 */
+    inputWrapper.className = "form-input-wrapper error";            /* js 036-6 */
     inputWrapper.querySelector('.message').textContent = message;     
 };
 
