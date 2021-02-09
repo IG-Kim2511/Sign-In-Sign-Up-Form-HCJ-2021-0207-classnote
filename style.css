@@ -124,6 +124,7 @@ html {
   /* css 017 shadow 오른쪽, 아래 만듬 */
   box-shadow: 0.5rem 0.5rem 0.5rem #eee;
   border-radius: 5rem;
+  position: relative;
 }
 
 /* css 030  : signIn-sighUp 버튼 클릭한때, input메뉴 몇개 사라지고 , 돌아오게하기*/
@@ -174,6 +175,25 @@ html {
 
 .message {
   /* display: none; */
+  position: absolute;
+  left: 2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  color: #f55e5e;
+
+  /*   js 039, */
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/*   js 039, */
+.error .message {
+  visibility: visible;
+  opacity: 1;
 }
 
 .form-btn {
